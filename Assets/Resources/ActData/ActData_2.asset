@@ -15,7 +15,7 @@ MonoBehaviour:
   <Title>k__BackingField: Act 2
   <Description>k__BackingField: Act 2 is....
   <IsLockedAct>k__BackingField: 0
-  <TextAsset>k__BackingField: {fileID: 4900000, guid: 945172df045cfd74d911da84266e6527,
+  <TextAsset>k__BackingField: {fileID: 4900000, guid: 16f275b5593d0544284e1b7c3e9c3f05,
     type: 3}
   <InitialCharacters>k__BackingField:
-  - {fileID: 2832416348910341005, guid: c668d2594c0d4304488bd6554a419233, type: 3}
+  - {fileID: 5265403941499903490, guid: 4a0c23823accfce4d91036cfb288537f, type: 3}

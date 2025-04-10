@@ -1,7 +1,6 @@
 using Agate.MVC.Base;
 using ProjectTA.Message;
 using ProjectTA.Utility;
-using UnityEngine;
 
 namespace ProjectTA.Module.Dialogue
 {

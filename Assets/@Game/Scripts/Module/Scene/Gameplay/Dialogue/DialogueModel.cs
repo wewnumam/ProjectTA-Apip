@@ -1,8 +1,10 @@
 using Agate.MVC.Base;
 using Ink.Runtime;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace ProjectTA.Module.Dialogue
 {

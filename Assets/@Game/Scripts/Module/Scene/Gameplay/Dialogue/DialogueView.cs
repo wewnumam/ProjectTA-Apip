@@ -1,6 +1,7 @@
 ﻿using Agate.MVC.Base;
 using DG.Tweening;
 using NaughtyAttributes;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +14,7 @@ namespace ProjectTA.Module.Dialogue
     {
         [SerializeField] private TMP_Text _characterText;
         [SerializeField] private Text _messageText;
+        [SerializeField] private List<GameObject> _choices;
         [SerializeField] private UnityEvent _onStart;
         [SerializeField] private UnityEvent _onEnd;
         [SerializeField] private UnityEvent _onLastLine;
@@ -29,6 +31,17 @@ namespace ProjectTA.Module.Dialogue
         {
             _onNext?.Invoke();
             EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        public void MakeChoice(int index)
+        {
+            _model.Story.ChooseChoiceIndex(index);
+            EventSystem.current.SetSelectedGameObject(null);
+            for (int i = 0; i < _choices.Count; i++)
+            {
+                _choices[i].SetActive(false);
+            }
+            DisplayNextLine();
         }
 
         public void SetCallback(UnityAction onNext)
@@ -55,6 +68,23 @@ namespace ProjectTA.Module.Dialogue
             {
                 _tween.Kill();
                 _messageText.text = model.Message;
+            }
+
+            if (model.Story != null)
+            {
+                int index = 0;
+
+                foreach (var choice in model.Story.currentChoices)
+                {
+                    _choices[index].SetActive(true);
+                    _choices[index].GetComponentInChildren<TMP_Text>().SetText(choice.text);
+                    index++;
+                }
+
+                for (int i = index; i < _choices.Count; i++)
+                {
+                    _choices[i].SetActive(false);
+                }
             }
 
             _log = model.GetLog();
