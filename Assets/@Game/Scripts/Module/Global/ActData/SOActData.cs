@@ -1,4 +1,6 @@
 using NaughtyAttributes;
+using ProjectTA.Module.CharacterDisplay;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectTA.Module.ActData
@@ -14,5 +16,7 @@ namespace ProjectTA.Module.ActData
         public bool IsLockedAct { get; private set; }
         [field: SerializeField]
         public TextAsset TextAsset { get; private set; }
+        [field: SerializeField]
+        public List<CharacterComponent> InitialCharacters { get; private set; }
     }
 }

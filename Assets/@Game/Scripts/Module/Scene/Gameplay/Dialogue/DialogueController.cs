@@ -1,6 +1,7 @@
 using Agate.MVC.Base;
 using ProjectTA.Message;
 using ProjectTA.Utility;
+using UnityEngine;
 
 namespace ProjectTA.Module.Dialogue
 {
@@ -28,6 +29,16 @@ namespace ProjectTA.Module.Dialogue
                 _model.SetNextLine();
                 _model.UpdateDialogueLine();
                 _model.SetIsTextAnimationComplete(false);
+
+                if (_model.CharacterName == string.Empty)
+                {
+                    Publish(new DeactivateCharactersMessage());
+                }
+                else
+                {
+                    Publish(new ActivateCharacterMessage(_model.CharacterName));
+                }
+
                 if (!_model.Story.canContinue)
                 {
                     _view.OnLastLine?.Invoke();
