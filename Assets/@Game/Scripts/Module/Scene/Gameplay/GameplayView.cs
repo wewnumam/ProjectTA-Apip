@@ -1,4 +1,5 @@
 using Agate.MVC.Base;
+using ProjectTA.Module.Dialogue;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,9 @@ namespace ProjectTA.Scene.Gameplay
         
         [field: SerializeField]
         public TMP_Text Title {  get; set; }
+
+        [field: SerializeField]
+        public DialogueView DialogueView { get; private set; }
 
         public void OnMainMenu()
         {

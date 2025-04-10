@@ -12,5 +12,7 @@ namespace ProjectTA.Module.ActData
         public string Description { get; private set; }
         [field: SerializeField]
         public bool IsLockedAct { get; private set; }
+        [field: SerializeField]
+        public TextAsset TextAsset { get; private set; }
     }
 }

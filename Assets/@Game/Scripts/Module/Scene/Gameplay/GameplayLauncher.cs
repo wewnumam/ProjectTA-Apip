@@ -3,6 +3,7 @@ using Agate.MVC.Core;
 using ProjectTA.Boot;
 using ProjectTA.Message;
 using ProjectTA.Module.ActData;
+using ProjectTA.Module.Dialogue;
 using ProjectTA.Module.SaveSystem;
 using ProjectTA.Utility;
 using System.Collections;
@@ -18,15 +19,19 @@ namespace ProjectTA.Scene.Gameplay
         private readonly GameSettingsController _gameSettings = new();
         private readonly ActDataController _actData = new();
 
+        private readonly DialogueController _dialogue = new();
+
         protected override IController[] GetSceneDependencies()
         {
             return new IController[] {
+                new DialogueController(),
             };
         }
 
         protected override IConnector[] GetSceneConnectors()
         {
             return new IConnector[] {
+                new DialogueConnector(),
             };
         }
 
@@ -46,6 +51,10 @@ namespace ProjectTA.Scene.Gameplay
             _view.SetCallbacks(OnMainMenu);
 
             _view.Title.SetText(_actData.Model.CurrentActData.Title);
+
+            _dialogue.SetView(_view.DialogueView);
+
+            Publish(new ShowDialogueMessage(_actData.Model.CurrentActData.TextAsset));
 
             yield return null;
         }
