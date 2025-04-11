@@ -1,5 +1,6 @@
 using Agate.MVC.Base;
 using ProjectTA.Module.ActList;
+using ProjectTA.Module.Settings;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,8 @@ namespace ProjectTA.Scene.MainMenu
 
         [field: SerializeField]
         public ActListView ActListView { get; private set; }
+        [field: SerializeField]
+        public SettingsView SettingsView { get; private set; }
 
         public void Play()
         {

@@ -10,19 +10,15 @@ namespace ProjectTA.Module.SaveSystem
         protected override void Connect()
         {
             Subscribe<DeleteSaveDataMessage>(_saveSystem.DeleteSaveData);
-            Subscribe<ToggleGameInductionMessage>(_saveSystem.ToggleGameInduction);
             Subscribe<ToggleSfxMessage>(_saveSystem.ToggleSfx);
             Subscribe<ToggleBgmMessage>(_saveSystem.ToggleBgm);
-            Subscribe<ToggleVibrationMessage>(_saveSystem.ToggleVibration);
         }
 
         protected override void Disconnect()
         {
             Unsubscribe<DeleteSaveDataMessage>(_saveSystem.DeleteSaveData);
-            Unsubscribe<ToggleGameInductionMessage>(_saveSystem.ToggleGameInduction);
             Unsubscribe<ToggleSfxMessage>(_saveSystem.ToggleSfx);
             Unsubscribe<ToggleBgmMessage>(_saveSystem.ToggleBgm);
-            Unsubscribe<ToggleVibrationMessage>(_saveSystem.ToggleVibration);
         }
     }
 }

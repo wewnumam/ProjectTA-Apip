@@ -1,6 +1,7 @@
 using Agate.MVC.Base;
 using ProjectTA.Module.CharacterDisplay;
 using ProjectTA.Module.Dialogue;
+using ProjectTA.Module.Settings;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,6 +19,8 @@ namespace ProjectTA.Scene.Gameplay
         public DialogueView DialogueView { get; private set; }
         [field: SerializeField]
         public CharacterDisplayView CharacterDisplayView { get; private set; }
+        [field: SerializeField]
+        public SettingsView SettingsView { get; private set; }
 
         public void OnMainMenu()
         {

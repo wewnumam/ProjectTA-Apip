@@ -41,12 +41,6 @@ namespace ProjectTA.Module.SaveSystem
             _savedSettingsData.Delete();
         }
 
-        public void ToggleGameInduction(ToggleGameInductionMessage message)
-        {
-            _model.SetIsGameIndctionActive(message.IsGameInductionActive);
-            _savedSettingsData.Save(_model.SavedSettingsData);
-        }
-
         public void ToggleSfx(ToggleSfxMessage message)
         {
             _model.SetIsSfxOn(message.Sfx);
@@ -56,12 +50,6 @@ namespace ProjectTA.Module.SaveSystem
         public void ToggleBgm(ToggleBgmMessage message)
         {
             _model.SetIsBgmOn(message.Bgm);
-            _savedSettingsData.Save(_model.SavedSettingsData);
-        }
-
-        public void ToggleVibration(ToggleVibrationMessage message)
-        {
-            _model.SetIsVibrationOn(message.Vibration);
             _savedSettingsData.Save(_model.SavedSettingsData);
         }
 

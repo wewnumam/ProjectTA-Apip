@@ -5,6 +5,7 @@ using ProjectTA.Message;
 using ProjectTA.Module.ActData;
 using ProjectTA.Module.ActList;
 using ProjectTA.Module.SaveSystem;
+using ProjectTA.Module.Settings;
 using ProjectTA.Utility;
 using System.Collections;
 using UnityEngine;
@@ -20,11 +21,13 @@ namespace ProjectTA.Scene.MainMenu
         private readonly ActDataController _actData = new();
 
         private readonly ActListController _actList = new();
+        private readonly SettingsController _settings = new();
 
         protected override IController[] GetSceneDependencies()
         {
             return new IController[] {
                 new ActListController(),
+                new SettingsController(),
             };
         }
 
@@ -53,6 +56,9 @@ namespace ProjectTA.Scene.MainMenu
 
             _actList.InitModel(_actData.Model);
             _actList.SetView(_view.ActListView);
+
+            _settings.InitModel(_gameSettings.Model);
+            _settings.SetView(_view.SettingsView);
 
             yield return null;
         }

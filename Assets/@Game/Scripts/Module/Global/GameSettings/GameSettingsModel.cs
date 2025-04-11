@@ -12,12 +12,6 @@ namespace ProjectTA.Module.SaveSystem
             SetDataAsDirty();
         }
 
-        public void SetIsGameIndctionActive(bool isGameIndctionActive)
-        {
-            SavedSettingsData.IsGameInductionActive = isGameIndctionActive;
-            SetDataAsDirty();
-        }
-
         public void SetIsSfxOn(bool isSfxOn)
         {
             SavedSettingsData.IsSfxOn = isSfxOn;
@@ -27,12 +21,6 @@ namespace ProjectTA.Module.SaveSystem
         public void SetIsBgmOn(bool isBgmOn)
         {
             SavedSettingsData.IsBgmOn = isBgmOn;
-            SetDataAsDirty();
-        }
-
-        public void SetIsVibrationOn(bool isVibrationOn)
-        {
-            SavedSettingsData.IsVibrationOn = isVibrationOn;
             SetDataAsDirty();
         }
     }

@@ -6,6 +6,7 @@ using ProjectTA.Module.ActData;
 using ProjectTA.Module.CharacterDisplay;
 using ProjectTA.Module.Dialogue;
 using ProjectTA.Module.SaveSystem;
+using ProjectTA.Module.Settings;
 using ProjectTA.Utility;
 using System.Collections;
 using UnityEngine;
@@ -22,12 +23,14 @@ namespace ProjectTA.Scene.Gameplay
 
         private readonly DialogueController _dialogue = new();
         private readonly CharacterDisplayController _characterDisplay = new();
+        private readonly SettingsController _settings = new();
 
         protected override IController[] GetSceneDependencies()
         {
             return new IController[] {
                 new DialogueController(),
                 new CharacterDisplayController(),
+                new SettingsController(),
             };
         }
 
@@ -63,6 +66,8 @@ namespace ProjectTA.Scene.Gameplay
 
             Publish(new ShowDialogueMessage(_actData.Model.CurrentActData.TextAsset));
 
+            _settings.InitModel(_gameSettings.Model);
+            _settings.SetView(_view.SettingsView);
 
             yield return null;
         }
