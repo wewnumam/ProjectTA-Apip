@@ -18,6 +18,7 @@ namespace ProjectTA.Module.Dialogue
         [SerializeField] private UnityEvent _onStart;
         [SerializeField] private UnityEvent _onEnd;
         [SerializeField] private UnityEvent _onLastLine;
+        [SerializeField] private UnityEvent<bool> _isChoiceActive;
         [SerializeField, ResizableTextArea, ReadOnly] private string _log;
 
         private UnityAction _onNext;
@@ -73,6 +74,8 @@ namespace ProjectTA.Module.Dialogue
             if (model.Story != null)
             {
                 int index = 0;
+
+                _isChoiceActive?.Invoke(model.Story.currentChoices.Count > 0);
 
                 foreach (var choice in model.Story.currentChoices)
                 {

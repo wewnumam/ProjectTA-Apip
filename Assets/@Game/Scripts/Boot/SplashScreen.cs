@@ -3,13 +3,14 @@ using Agate.MVC.Core;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ProjectTA.Boot
 {
     public class SplashScreen : BaseSplash<SplashScreen>
     {
-        [SerializeField] RectTransform splashScreenWindow;
         [SerializeField] TMP_Text versionText;
+        [SerializeField] UnityEvent<bool> isStartTransition;
 
         protected override IMain GetMain()
         {
@@ -30,18 +31,13 @@ namespace ProjectTA.Boot
         protected override void StartTransition()
         {
             base.StartTransition();
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(splashScreenWindow.DOAnchorPosX(0, .2f));
-            sequence.Play();
+            isStartTransition?.Invoke(true);
         }
 
         protected override void FinishTransition()
         {
             base.FinishTransition();
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(splashScreenWindow.DOAnchorPosX(3000, 1f));
-            sequence.Append(splashScreenWindow.DOAnchorPosX(-3000, 0f));
-            sequence.Play();
+            isStartTransition?.Invoke(false);
         }
     }
 }
